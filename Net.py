@@ -264,9 +264,9 @@ AlexNet
 """
 
 
-def AlexNet():
+def AlexNet(input_chann_num, output_chann_num):
     net = nn.Sequential(
-        nn.Conv2d(1, 96, kernel_size=11, stride=4, padding=1),
+        nn.Conv2d(input_chann_num, 96, kernel_size=11, stride=4, padding=1),
         nn.ReLU(),
         nn.MaxPool2d(kernel_size=3, stride=2),
         nn.Conv2d(96, 256, kernel_size=5, padding=2),
@@ -286,7 +286,7 @@ def AlexNet():
         nn.Linear(4096, 4096),
         nn.ReLU(),
         nn.Dropout(p=0.5),
-        nn.Linear(4096, 10),
+        nn.Linear(4096, output_chann_num),
     )
     for w in net:
         if type(w) == nn.Linear or type(w) == nn.Conv2d:
