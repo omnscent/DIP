@@ -365,6 +365,7 @@ def NiN12():
         nn.AdaptiveAvgPool2d((1, 1)),
         nn.Flatten(),
     )
+    return net
 
 
 """
@@ -434,7 +435,7 @@ ResNet
 """
 
 
-class Residual(nn.Module):  # @save
+class Residual(nn.Module):
     def __init__(self, input_chann_num, output_chann_num, use_1x1conv=False, strides=1):
         super().__init__()
         self.conv1 = nn.Conv2d(
@@ -554,6 +555,7 @@ def DenseNet121():
         nn.Flatten(),
         nn.Linear(num_channels, 10)
     )
+    return net
 
 
 """
@@ -590,7 +592,7 @@ def HTNet(input_chann_num, output_chann_num):
         HTBlock(64, 64, 64, 1),
         nn.MaxPool2d(kernel_size=3, padding=1, stride=2),
         HTBlock(128, 64, 64, 1),
-        nn.Conv2d(128, 10, kernel_size=1),
+        nn.Conv2d(128, output_chann_num, kernel_size=1),
         nn.AdaptiveAvgPool2d((1, 1)),
         nn.Flatten(),
     )
