@@ -247,7 +247,7 @@ def LeNet():
         nn.Sigmoid(),
         nn.AvgPool2d(kernel_size=2, stride=2),
         nn.Flatten(),
-        nn.Linear(16 * 5 * 5, 120),
+        nn.Linear(16 * 6 * 6, 120),
         nn.Sigmoid(),
         nn.Linear(120, 84),
         nn.Sigmoid(),
